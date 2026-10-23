@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="MysteryBox — an original browser-based detective mystery.">
+  <title>MysteryBox — Case 001: The Missing Trophy</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="data/case001.js" defer></script>
+  <script src="js/game.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" id="brand-home" aria-label="MysteryBox home">
+      <span class="brand-mark">M</span><span>MYSTERY<span class="brand-accent">BOX</span></span>
+    </a>
+    <div class="topbar-right">
+      <span class="case-label"><span class="status-dot"></span> CASE FILE 001</span>
+      <button class="icon-button" id="reset-button" type="button" title="Restart this case">↻ <span class="button-word">Restart</span></button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="screen active" id="screen-home" aria-labelledby="home-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> AN INTERACTIVE DETECTIVE STORY</p>
+          <h1 id="home-title">Somewhere,<br>the truth is <em>waiting.</em></h1>
+          <p class="hero-text">Four suspects. One missing trophy. A timeline full of holes. Follow the evidence, challenge every story, and make your case.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="start-button" type="button">Open the case <span aria-hidden="true">↗</span></button>
+            <span class="time-note">10–15 MIN <span class="note-separator">/</span> BEGINNER</span>
+          </div>
+          <div class="hero-meta">
+            <div><span class="meta-number">01</span><span class="meta-label">ORIGINAL CASE</span></div>
+            <div><span class="meta-number">04</span><span class="meta-label">PERSONS OF INTEREST</span></div>
+            <div><span class="meta-number">06</span><span class="meta-label">EVIDENCE FILES</span></div>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Illustration of a detective desk with a case file">
+          <div class="art-glow"></div>
+          <div class="window-light"></div>
+          <div class="rain rain-one"></div><div class="rain rain-two"></div><div class="rain rain-three"></div>
+          <div class="desk">
+            <div class="photo photo-one"><span>7:12 PM</span></div>
+            <div class="photo photo-two"><span>EXHIBIT C</span></div>
+            <div class="red-thread"></div>
+            <div class="folder">
+              <div class="folder-tab">CRESCENT COLLEGE</div>
+              <div class="folder-stamp">CASE<br>001</div>
+              <p>THE MISSING<br><strong>TROPHY</strong></p>
+              <span class="folder-small">CONFIDENTIAL • INVESTIGATION COPY</span>
+            </div>
+            <div class="magnifier"><span></span></div>
+            <div class="desk-note">THE TRUTH LEAVES TRACES.</div>
+          </div>
+          <div class="art-caption"><span class="caption-line"></span> CRESCENT COLLEGE · 7:30 PM</div>
+        </div>
+      </div>
+      <div class="warning-strip"><span class="warning-icon">!</span><span>This is a fictional case. All people, places, and events are invented.</span><span class="strip-right">YOUR INVESTIGATION STARTS HERE</span></div>
+    </section>
+
+    <section class="screen" id="screen-briefing" aria-labelledby="briefing-title">
+      <div class="section-heading">
+        <p class="eyebrow">01 / THE BRIEFING</p>
+        <h2 id="briefing-title">The Missing Trophy</h2>
+        <p class="section-subtitle">Crescent College · Friday evening · 7:30 PM</p>
+      </div>
+      <div class="briefing-layout">
+        <article class="panel incident-panel">
+          <div class="panel-top"><span>INCIDENT REPORT</span><span class="stamp">OPEN CASE</span></div>
+          <p class="dropcap">The rain has just started when you enter the college's old trophy room.</p>
+          <p>An empty velvet stand sits beneath a flickering light. The glass display case is intact. There are no signs of forced entry.</p>
+          <p>The championship trophy was last confirmed in place at <strong>6:40 PM</strong>. At <strong>7:30 PM</strong>, it was discovered missing.</p>
+          <p>The principal gives you one instruction:</p>
+          <blockquote>“Find the trophy before tomorrow's ceremony. And don't accuse anyone without evidence.”</blockquote>
+          <div class="incident-footer"><span>LEAD INVESTIGATOR</span><strong>YOU</strong></div>
+        </article>
+        <aside class="panel objective-panel">
+          <p class="eyebrow">YOUR OBJECTIVES</p>
+          <ol class="objective-list">
+            <li><span>01</span> Examine all evidence files</li>
+            <li><span>02</span> Compare the four statements</li>
+            <li><span>03</span> Build a consistent timeline</li>
+            <li><span>04</span> Submit your final accusation</li>
+          </ol>
+          <div class="briefing-note"><span class="note-icon">✦</span><p>Read carefully. A clue can be important because of what it proves — or what it <em>doesn't</em> prove.</p></div>
+          <button class="button button-primary full-width" id="to-investigation-button" type="button">Begin investigation <span>→</span></button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-investigation" aria-labelledby="investigation-title">
+      <div class="section-heading section-heading-row">
+        <div><p class="eyebrow">02 / INVESTIGATION</p><h2 id="investigation-title">The evidence room</h2><p class="section-subtitle">Inspect the files. Connect the details. Don't jump to conclusions.</p></div>
+        <div class="progress-card"><span class="progress-number" id="evidence-count">0/6</span><span class="progress-label">FILES REVIEWED</span><div class="progress-track"><span id="evidence-progress"></span></div></div>
+      </div>
+      <div class="investigation-layout">
+        <div class="evidence-column">
+          <div class="subheading-row"><h3>Evidence files</h3><span class="subtle-label">SELECT A FILE TO INSPECT</span></div>
+          <div class="evidence-grid" id="evidence-grid"></div>
+        </div>
+        <aside class="panel suspect-panel">
+          <div class="panel-top"><span>PERSONS OF INTEREST</span><span class="small-count">04</span></div>
+          <div id="suspect-list" class="suspect-list"></div>
+          <div class="suspect-reminder"><span>CASE NOTE</span><p>Opportunity is not proof. Look for details that connect a person to the missing trophy.</p></div>
+          <button class="button button-secondary full-width" id="to-accusation-button" type="button">Make an accusation <span>→</span></button>
+          <p class="tiny-help" id="accusation-help">Reviewing every file is recommended before you decide.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-accusation" aria-labelledby="accusation-title">
+      <div class="section-heading">
+        <p class="eyebrow">03 / YOUR DEDUCTION</p>
+        <h2 id="accusation-title">Make your case.</h2>
+        <p class="section-subtitle">Choose the explanation that best fits the evidence. You can review the files before submitting.</p>
+      </div>
+      <div class="accusation-layout">
+        <form class="panel accusation-form" id="accusation-form">
+          <div class="form-step"><span>01</span><div><label for="culprit-select">Who took the trophy?</label><p>Select the person you believe is responsible.</p></div></div>
+          <select id="culprit-select" name="culprit" required><option value="">Choose a suspect…</option></select>
+          <div class="form-step"><span>02</span><div><label for="motive-select">What was the motive?</label><p>Choose the explanation best supported by the case.</p></div></div>
+          <select id="motive-select" name="motive" required><option value="">Choose a motive…</option></select>
+          <div class="form-step"><span>03</span><div><label for="clue-select">Which clue is most decisive?</label><p>Pick the evidence that most directly connects the suspect to the hiding place.</p></div></div>
+          <select id="clue-select" name="clue" required><option value="">Choose a clue…</option></select>
+          <div class="form-step"><span>04</span><div><label for="timeline-select">Which timeline explanation fits?</label><p>Choose the conclusion that follows from the timestamps.</p></div></div>
+          <select id="timeline-select" name="timeline" required><option value="">Choose an explanation…</option></select>
+          <div class="form-actions"><button class="button button-primary" type="submit">Submit final deduction <span>↗</span></button><button class="text-button" id="back-to-evidence-button" type="button">← Review evidence</button></div>
+        </form>
+        <aside class="panel rules-panel">
+          <p class="eyebrow">THE DETECTIVE'S RULE</p>
+          <h3>Build a theory.<br><em>Not a hunch.</em></h3>
+          <p>Each part of your deduction is scored separately. You can identify the culprit and still miss the motive or the decisive clue.</p>
+          <div class="score-breakdown">
+            <div><span>Correct culprit</span><strong>40 pts</strong></div>
+            <div><span>Correct motive</span><strong>20 pts</strong></div>
+            <div><span>Decisive evidence</span><strong>20 pts</strong></div>
+            <div><span>Timeline logic</span><strong>20 pts</strong></div>
+          </div>
+          <p class="rules-footnote">No timer. No penalty for reading every file. Take your time.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-results" aria-labelledby="results-title">
+      <div class="results-hero">
+        <div class="case-closed-stamp" id="result-stamp">CASE<br>CLOSED</div>
+        <p class="eyebrow">04 / INVESTIGATION REPORT</p>
+        <h2 id="results-title">The truth, at last.</h2>
+        <p class="section-subtitle" id="result-subtitle">Your deduction has been reviewed.</p>
+        <div class="final-score"><span id="final-score">0</span><span class="score-denom">/ 100</span></div>
+        <div class="rank-label" id="rank-label">INVESTIGATOR</div>
+      </div>
+      <div class="results-layout">
+        <article class="panel reveal-panel">
+          <div class="panel-top"><span>THE SOLUTION</span><span class="stamp">DEBRIEF</span></div>
+          <h3 id="solution-title">What really happened</h3>
+          <p id="solution-text"></p>
+          <div class="solution-checks" id="solution-checks"></div>
+        </article>
+        <aside class="panel score-panel">
+          <div class="panel-top"><span>YOUR SCORECARD</span><span class="small-count">100 PTS</span></div>
+          <div id="score-breakdown-results" class="score-results"></div>
+          <p class="score-advice" id="score-advice"></p>
+        </aside>
+      </div>
+      <div class="results-actions"><button class="button button-primary" id="play-again-button" type="button">Investigate again <span>↻</span></button><button class="button button-secondary" id="home-button" type="button">Return to home</button></div>
+    </section>
+
+    <section class="screen" id="screen-clue-modal" aria-labelledby="clue-modal-title">
+      <div class="modal-backdrop" id="modal-backdrop"></div>
+      <article class="panel clue-detail-panel">
+        <button class="modal-close" id="close-clue-button" type="button" aria-label="Close clue">×</button>
+        <p class="eyebrow" id="clue-modal-eyebrow">EVIDENCE FILE</p>
+        <div class="clue-detail-icon" id="clue-detail-icon">✦</div>
+        <h2 id="clue-modal-title">Evidence title</h2>
+        <p class="clue-detail-description" id="clue-modal-description"></p>
+        <div class="clue-fact-box"><span>WHY IT MATTERS</span><p id="clue-modal-meaning"></p></div>
+        <div class="clue-modal-footer"><span id="clue-modal-number">EXHIBIT 01</span><button class="button button-primary" id="mark-clue-read-button" type="button">File reviewed <span>✓</span></button></div>
+      </article>
+    </section>
+
+    <section class="screen" id="screen-suspect-modal" aria-labelledby="suspect-modal-title">
+      <div class="modal-backdrop" id="suspect-modal-backdrop"></div>
+      <article class="panel clue-detail-panel suspect-detail-panel">
+        <button class="modal-close" id="close-suspect-button" type="button" aria-label="Close suspect">×</button>
+        <p class="eyebrow">PERSON OF INTEREST</p>
+        <div class="suspect-monogram" id="suspect-monogram">?</div>
+        <h2 id="suspect-modal-title">Suspect name</h2>
+        <p class="suspect-role" id="suspect-modal-role"></p>
+        <blockquote id="suspect-modal-statement"></blockquote>
+        <div class="clue-fact-box"><span>INVESTIGATOR'S NOTE</span><p id="suspect-modal-note"></p></div>
+        <button class="button button-secondary full-width" id="close-suspect-detail-button" type="button">Return to evidence</button>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> MYSTERYBOX</span>
+    <span>ORIGINAL FICTION · CASE 001</span>
+    <span class="footer-right">THE TRUTH LEAVES TRACES.</span>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
